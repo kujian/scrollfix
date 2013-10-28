@@ -2,3 +2,27 @@ scrollfix
 =========
 
 jquery插件：滑动到某个位置浮动起来
+
+插件参数有4个，下面我将说明一下如何使用这个浮动固定插件
+
+#第一个：startTop:null#
+
+这个是定义什么时候指定的元素开始浮动，如果没有设置，则默认滚动指定元素位置开始浮动。如有指定，可以为startTop:"#startTop",当元素到达这个标签的顶部时，则浮动出来。
+
+#第二个：startBottom:null#
+
+这个同样是定义元素什么时候开始浮动，跟上面不能冲突，只能指定一个。两个如果都指定，则默认后面这个参数为准。这个是当元素滚动到startBottom:"#startBottom"的末端时开始浮动。
+
+#第三个：distanceTop:0#
+
+距离顶部的高度，默认为0。
+
+#第四个：endPos:0#
+
+距离顶部的高度为多少时停止浮动，并固定在相应位置，可以指定jquery对象，如:endPos:"#footer",也可以是数字：endPos:300.
+
+#使用方法
+
+$("#fix").scrollFix({startTop:"#startTop",distanceTop:20,endPos:"#footer"});
+
+具体你可以下载我里面提供的六个静态文件，给出了六种可能性。希望你会喜欢上这个插件。enjoy it!
