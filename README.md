@@ -4,6 +4,10 @@ scrollfix
 jquery插件：滑动到某个位置浮动起来
 
 <a href="http://caibaojian.com/scrollfix">插件参数详解和在线演示</a>
+2013-10-29
+1.2
+	更新了startTop和startBottom的代码
+	更新了在线演示代码
 
 插件参数有4个，下面我将说明一下如何使用这个浮动固定插件
 
