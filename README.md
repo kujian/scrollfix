@@ -30,6 +30,8 @@ $("#fix").scrollFix({startTop:"#startTop",distanceTop:20,endPos:"#footer"});
 
 具体你可以下载我里面提供的六个静态文件，给出了六种可能性。希望你会喜欢上这个插件。enjoy it!
 
+###贡献者
+
 感谢“Plāybǒy”发现插件的bug，并把演示发给我。谢谢
 
 ###版本
