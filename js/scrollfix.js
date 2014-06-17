@@ -22,13 +22,25 @@
 				documentHeight = $(document).height(), //文档高度
 				optsTop = opts.distanceTop, //定义到顶部的高度
 				outerHeight = obj.outerHeight(), //对象高度
+				marginBottom = (obj.css("marginBottom")).slice(0,-2),
+				outerHeight = parseInt(outerHeight) + parseInt(marginBottom),
 				outerWidth = obj.outerWidth(), //对象外宽度
 				objWidth = obj.width(),
 				startTop = $(opts.startTop), //开始浮动固定对象
 				startBottom = $(opts.startBottom),
 				toBottom, //停止滚动位置距离底部的高度
 				ScrollHeight, //对象滚动的高度
-				endfix; //开始停止固定的位置
+				endfix; //开始停止固定的位置	
+			//如果没有找到节点，不进行处理
+			if(obj.length<=0){
+				return;
+			}
+			// 计算父节点的上边到顶部距离
+			// 如果 body 有 top 属性, 消除这些位移
+            var bodyToTop = parseInt(jQuery('body').css('top'), 10);
+            if(!isNaN(bodyToTop)) {
+                    optsTop += bodyToTop;
+            }
 			if ($.isNumeric(opts.endPos)) {
 				toBottom = opts.endPos
 			} else {
@@ -43,7 +55,7 @@
 					var startTopOffset = startTop.offset(),
 						startTopPos = startTopOffset.top;
 					offsetTop = startTopPos;
-					console.log(offsetTop);
+					//console.log(offsetTop);
 				}
 				if (startBottom[0]) {
 					var startBottomOffset = startBottom.offset(),
@@ -54,6 +66,7 @@
 				//if ('undefined' != typeof(document.body.style.maxHeight)) {
 				toTop = parseInt(offsetTop - optsTop);
 				toTop = (toTop > 0) ? toTop : 0;
+				var selfBottom = documentHeight - offsetTop - outerHeight;
 				//if(opts.startPos)
 				if ((ScrollTop > toTop) && (ScrollTop < endfix)) {
 					obj.fadeIn().css({
@@ -67,12 +80,16 @@
 						'height': outerHeight,
 						'_height': "0"
 					}).insertBefore(obj)
-				} else if (ScrollTop >= endfix) {
+				} else if ((ScrollTop >= endfix)&& (selfBottom<=endfix) ){
 					obj.css({
 						"position": "absolute",
 						"top": endfix,
 						"width": objWidth
-					})
+					});
+					placeholder.css({
+						'height': outerHeight,
+						'_height': "0"
+					}).insertBefore(obj)
 				} else {
 					obj.css({
 						"position": "static",
