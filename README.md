@@ -4,10 +4,7 @@ scrollfix
 jquery插件：滑动到某个位置浮动起来
 
 <a href="http://caibaojian.com/scrollfix">插件参数详解和在线演示</a>
-2013-10-29
-1.2
-	更新了startTop和startBottom的代码
-	更新了在线演示代码
+
 
 插件参数有4个，下面我将说明一下如何使用这个浮动固定插件
 
@@ -32,3 +29,15 @@ jquery插件：滑动到某个位置浮动起来
 $("#fix").scrollFix({startTop:"#startTop",distanceTop:20,endPos:"#footer"});
 
 具体你可以下载我里面提供的六个静态文件，给出了六种可能性。希望你会喜欢上这个插件。enjoy it!
+
+===版本===
+- 1.2 2013-10-29
+
+* 更新了startTop和startBottom的代码
+* 更新了在线演示代码
+
+- 1.3 2014-6-17
+
+* 修复了当设置开始固定的高度大于元素距离顶部高度时，不处理浮动固定
+* 修复了元素的高度加上margin-bottom的值
+* 修复了当元素没有触发position:fixed时，给元素增加一个填充元素的高度。
