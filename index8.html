@@ -9,16 +9,16 @@
     <meta name="keywords" content="前端博客,代码演示" />
   	<meta name="description" content="滚动停在底部某个标签的位置-jquery滚动固定插件：scrollfix演示，前端博客代码演示，caibaojian.com，前端代码范例，演示代码" />
   	<style type="text/css">
-  	.main{max-width:820px; margin:0 auto;}
-  	.content{float:left; width:500px;}
-  	.sidebar{float:right; width:300px;margin-top:40px; text-align: left;}
+  	.main{width:820px; margin:0 auto; }
+  	.content{float:left; width:500px; text-align: left;}
+  	.path{margin-bottom: 40px;}
+  	.sidebar{float:right; width:300px; text-align: left;}
   	.widget{border:1px solid #eee; margin-bottom:20px;}
   	.widget-title{border-bottom:1px solid #eee; font-size:12px; line-height:24px; padding-left:10px;}
   	.widget-box{padding:10px;}
-  	.content >div{border:1px solid #eee; padding:10px; font-size:14px; text-align: left; margin-bottom: 20px; max-width:478px;}
-  	.content >div:first-child{margin-top:40px;}
+  	.content .widget{border:1px solid #eee; padding:10px; font-size:14px; text-align: left; margin-bottom: 20px; max-width:478px;}
   	.active{background: #ddd;}
-  	.content >div > h3{font-size:18px; line-height: 2;}
+  	.content .widget  h3{font-size:18px; line-height: 2;}
   	</style>
 </head>
 <body>
@@ -101,11 +101,18 @@
 				<h3 class="widget-title"><a href="index6.html">滚动停在底部#fixFooter的位置</a></h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, officia libero quia animi voluptates autem quae voluptate aut. Iusto, iste, at dolor fugiat nisi nihil ea dicta nostrum voluptates ducimus?</div>
 			</div>
+			<h3><a href="index7.html">混合例子1：距离顶部20像素，在某个标签开始固定，停靠在底部300像素位置</a></h3>
+			<h3><a href="index8.html">混合例子2：距离顶部10像素，在某个标签底部固定，停靠在底部某个标签位置</a></h3>
 		</div>
 
 	</div>
 	
-	<script src="js/jquery.js"></script>
+	<script src="http://lsibs.baidu.com/jquery/1.9.0/jquery.js"></script>
+	<script type="text/javascript">
+	<!--
+	!window.jQuery && document.write('<script src=js/jquery.js><\/script>');
+	//-->
+	</script>
 	<script src="js/scrollfix.js"></script>
 	<script type="text/javascript">
 		$(function(){

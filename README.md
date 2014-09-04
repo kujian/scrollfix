@@ -51,3 +51,6 @@ $("#fix").scrollFix({startTop:"#startTop",distanceTop:20,endPos:"#footer"});
  * 修复了上次开始停止固定的高度大于元素距离底部高度时，不处理浮动固定
  * 数值改为浮点数
  * 增加了对marginBottom为auto时的处理
+ * 增加了两个混合的使用例子
+ * 兼容IE6
+ * 增加了对body有top值时修正固定的顶部高度

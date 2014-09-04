@@ -29,6 +29,16 @@
 				toBottom, //停止滚动位置距离底部的高度
 				ScrollHeight, //对象滚动的高度
 				endfix; //开始停止固定的位置
+			//如果没有找到节点，不进行处理
+			if(obj.length<=0){
+				return;
+			}
+			// 计算父节点的上边到顶部距离
+			// 如果 body 有 top 属性, 消除这些位移
+            var bodyToTop = parseInt(jQuery('body').css('top'), 10);
+            if(!isNaN(bodyToTop)) {
+                    optsTop += bodyToTop;
+           }
 			if ($.isNumeric(opts.endPos)) {
 				toBottom = opts.endPos
 			} else {
@@ -39,7 +49,6 @@
 				var startTopOffset = startTop.offset(),
 					startTopPos = startTopOffset.top;
 				offsetTop = startTopPos;
-				// console.log(offsetTop);
 			}
 			if (startBottom[0]) {
 				var startBottomOffset = startBottom.offset(),
@@ -47,37 +56,29 @@
 					startBottomHeight = startBottom.outerHeight();
 				offsetTop = parseFloat(startBottomPos + startBottomHeight);
 			}
-			//if ('undefined' != typeof(document.body.style.maxHeight)) {
+
 			toTop = parseFloat(offsetTop - optsTop);
 			toTop = (toTop > 0) ? toTop : 0;
 			var selfBottom = documentHeight -  offsetTop - outerHeight;
-			// console.log(obj.outerHeight());
-			// console.log(outerHeight);
-			// console.log(selfBottom);
-			// console.log(toBottom);
-			if(toBottom != 0){
-				if(selfBottom<=toBottom) return ;
-			}
-			//console.log(offsetTop);
+
+			if((toBottom != 0) && (selfBottom<=toBottom)){ return ;}
+			var ie6=!-[1,]&&!window.XMLHttpRequest; //兼容IE6
 			$(window).scroll(function() {
 				var ScrollTop = $(window).scrollTop();
-				// console.log(start);
-
-				// console.log(ScrollTop);
-				// console.log(toTop);
-				// console.log(endfix);
-				//if(opts.startPos)
 				if ((ScrollTop > toTop) && (ScrollTop < endfix)) {
 					obj.fadeIn().css({
 						"position": "fixed",
-						"_position": "absolute",
-						"top": opts.distanceTop,
-						"_top": opts.distanceTop,
+						"top": optsTop,
 						"width": objWidth
 					});
+					if(ie6){//IE6则使用这个样式
+						obj.css({
+							"position":"absolute",
+							"top":ScrollTop + optsTop
+						})
+					}
 					placeholder.css({
-						'height': outerHeight,
-						'_height': "0"
+						'height': outerHeight
 					}).insertBefore(obj)
 				} else if (ScrollTop >= endfix) {
 					obj.css({
@@ -86,8 +87,7 @@
 						"width": objWidth
 					});
 					placeholder.css({
-						'height': outerHeight,
-						'_height': "0"
+						'height': outerHeight
 					}).insertBefore(obj)
 				} else {
 					obj.css({
@@ -96,7 +96,6 @@
 					});
 					placeholder.remove()
 				}
-				//}
 			}).scroll()
 		})
 	}
