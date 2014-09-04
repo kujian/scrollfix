@@ -19,6 +19,7 @@
   	.content >div:first-child{margin-top:40px;}
   	.active{background: #ddd;}
   	.content >div > h3{font-size:18px; line-height: 2;}
+  	#startBottom{color:red;}
   	</style>
 </head>
 <body>
@@ -29,8 +30,16 @@
         </span></div>
         <div class="content">
 			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
+				<h3 class="widget-title">滚动到某个元素的末端才开始固定</h3>
+				<div class="widget-box"><p>很多时候，也许我们是需要在某个内容结束的位置接着出现固定，比如说侧栏固定内容，总得要侧栏的所有内容都看完了，才让他开始固定起来，否则就遮住了其他内容，效果就不太好了。代码如下：</p>
+				<pre><code>&lt;script type="text/javascript" src="js/scrollfix.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+$(function(){
+var fixStartBottom = $(".fix-startBottom");
+fixStartBottom.scrollFix({startBottom:"#startBottom"});
+})
+&lt;/script&gt;</code></pre>
+				</div>
 			</div>
 			<div class="widget">
 				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
@@ -62,7 +71,7 @@
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 			<div class="widget">
-				<h3 class="widget-title">这是距离顶部300像素位置</h3>
+				<h3 class="widget-title">这是距离底部300像素位置</h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 

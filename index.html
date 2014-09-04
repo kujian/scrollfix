@@ -29,9 +29,14 @@
         </span></div>
         <div class="content">
 			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
-			</div>
+				<h3 class="widget-title">开始浮动代码：这个是没有任何设置的，就是滚动到元素的位置开始浮动</h3>
+				<div class="widget-box"><pre><code>&lt;script type="text/javascript" src="js/scrollfix.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+$(function(){
+var fix = $(".fix");
+fix.scrollFix();
+})
+&lt;/script&gt;</code></pre></div></div>
 			<div class="widget">
 				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, culpa, officia, tempore, et vel earum delectus obcaecati ducimus at voluptates odio aliquid quis nulla illo veniam non dolorem molestias voluptas!</div>
@@ -41,7 +46,7 @@
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
+				<h3 class="widget-title"></h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 			<div class="widget">
@@ -61,14 +66,14 @@
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 			<div class="widget">
-				<h3 class="widget-title">这是距离顶部300像素位置</h3>
+				<h3 class="widget-title">这是距离底部300像素位置</h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 
 		</div>
 		<div class="sidebar">
 			<div class="widget active fix">
-				<h3 class="widget-title"><a href="index.html">默认滚动到这里开始规定</a></h3>
+				<h3 class="widget-title"><a href="index.html">默认滚动到这里开始固定在顶部</a></h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 			<div class="widget fix-top">

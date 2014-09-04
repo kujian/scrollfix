@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>滚动停在底部某个标签的位置-jquery滚动固定插件：scrollfix演示-前端博客</title>
+    <title>滚动停在底部300像素-jquery滚动固定插件：scrollfix演示-前端博客</title>
     <link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="icon">
   	<link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="shortcut icon">
   	<link rel="stylesheet" href="reset.css"/>
     <meta name="keywords" content="前端博客,代码演示" />
-  	<meta name="description" content="滚动停在底部某个标签的位置-jquery滚动固定插件：scrollfix演示，前端博客代码演示，caibaojian.com，前端代码范例，演示代码" />
+  	<meta name="description" content="滚动停在底部300像素-jquery滚动固定插件：scrollfix演示，前端博客代码演示，caibaojian.com，前端代码范例，演示代码" />
   	<style type="text/css">
   	.main{max-width:820px; margin:0 auto;}
   	.content{float:left; width:500px;}
@@ -29,8 +29,17 @@
         </span></div>
         <div class="content">
 			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
+				<h3 class="widget-title">混合使用参数：1.元素距离顶部20像素，滚动到某个标签开始滚动，最后停靠在底部300像素位置</h3>
+				<div class="widget-box">
+					<p>在日常中，我们常常需要的不是单独的某个，而是像上面的混合使用，没问题，同样支持</p>
+					<pre><code>&lt;script type="text/javascript" src="js/scrollfix.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+$(function(){
+var fixbottom = $(".fix-bottom");
+fixbottom.scrollFix({distanceTop:20,startTop:"#startTop",endPos:300});
+})
+&lt;/script&gt;</code></pre>
+				</div>
 			</div>
 			<div class="widget">
 				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
@@ -52,44 +61,23 @@
 				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
-			<div class="widget">
+			<div class="widget" id="fixFooter">
 				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 			<div class="widget">
-				<h3 class="widget-title" id="fixFooter">这是#fixFooter的位置</h3>
-				
-			</div>
-			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
+				<h3 class="widget-title">这是#fixFooter的位置</h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
+				<h3 class="widget-title">这是距离底部300像素位置</h3>
+				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, tempore, placeat, cupiditate soluta impedit inventore labore perferendis molestiae aut et blanditiis atque eaque</div>
 			</div>
-			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
-			</div>
-			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
-			</div>
-			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
-			</div>
-			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
-			</div>
-			
 
 		</div>
 		<div class="sidebar">
 			<div class="widget fix">
-				<h3 class="widget-title"><a href="index.html">默认滚动到这里开始固定</a></h3>
+				<h3 class="widget-title"><a href="index.html">默认滚动到这里开始浮动</a></h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 			<div class="widget fix-top">
@@ -104,7 +92,11 @@
 				<h3 class="widget-title"><a href="index4.html">滚动到一个标签#startBottom的末端开始固定</a></h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, earum aliquid quia facere dolorum nam ipsa quae ullam ea laboriosam deleniti perferendis similique odit at ducimus rerum porro maxime aut.<div id="startBottom">这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端 </div></div>
 			</div>
-			<div class="widget active fix-footer">
+			<div class="widget active fix-bottom">
+				<h3 class="widget-title"><a href="index5.html">滚动停在底部300像素</a></h3>
+				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, obcaecati, omnis eaque dolorem quam inventore ipsum dignissimos non esse doloremque qui consequatur eius fuga aspernatur facere corporis porro sit distinctio!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, obcaecati, omnis eaque dolorem quam inventore ipsum dignissimos non esse doloremque qui consequatur eius fuga aspernatur facere corporis porro sit distinctio!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, obcaecati, omnis eaque dolorem quam inventore ipsum dignissimos non esse doloremque qui consequatur eius fuga aspernatur facere corporis porro sit distinctio!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, obcaecati, omnis eaque dolorem quam inventore ipsum dignissimos non esse doloremque qui consequatur eius fuga aspernatur facere corporis porro sit distinctio!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, obcaecati, omnis eaque dolorem quam inventore ipsum dignissimos non esse doloremque qui consequatur eius fuga aspernatur facere corporis porro sit distinctio!</div>
+			</div>
+			<div class="widget fix-footer">
 				<h3 class="widget-title"><a href="index6.html">滚动停在底部#fixFooter的位置</a></h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, officia libero quia animi voluptates autem quae voluptate aut. Iusto, iste, at dolor fugiat nisi nihil ea dicta nostrum voluptates ducimus?</div>
 			</div>
@@ -113,6 +105,11 @@
 	</div>
 	
 	<script src="js/jquery.js"></script>
+    <script type="text/javascript">
+	<!--
+	!window.jQuery && document.write('<script src=js/jquery.js><\/script>');
+	//-->
+	</script>
 	<script src="js/scrollfix.js"></script>
 	<script type="text/javascript">
 		$(function(){
@@ -126,9 +123,9 @@
 			//第四种情况
 			//fixStartBottom.scrollFix({startBottom:"#startBottom"});
 			//第五种情况
-			//fixbottom.scrollFix({endPos:300});
+			fixbottom.scrollFix({distanceTop:20,startTop:"#startTop",endPos:300});
 			//第六种情况
-			fixfooter.scrollFix({endPos:"#fixFooter"})
+			//fixfooter.scrollFix({endPos:"#fixFooter"})
 		})
 
 	</script>

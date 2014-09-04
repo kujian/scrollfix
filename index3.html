@@ -19,6 +19,7 @@
   	.content >div:first-child{margin-top:40px;}
   	.active{background: #ddd;}
   	.content >div > h3{font-size:18px; line-height: 2;}
+  	#startTop{color:red;}
   	</style>
 </head>
 <body>
@@ -29,15 +30,24 @@
         </span></div>
         <div class="content">
 			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
+				<h3 class="widget-title">滚动到某个标签的位置开始滚动</h3>
+				<div class="widget-box">
+					<p>很多时候，你并不想滚动到该元素的时候开始滚动，而是在到达某个地方的时候才开始滚动，比如说评论时才出现等等，你可以随意定义这个开始固定的位置</p>
+					<pre><code>&lt;script type="text/javascript" src="js/scrollfix.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+$(function(){
+var fixStartTop = $(".fix-startTop");
+fixStartTop.scrollFix({startTop:"#startTop"});
+})
+&lt;/script&gt;</code></pre>
+				</div>
 			</div>
 			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3><div id="startTop">这是#start</div>
+				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, culpa, officia, tempore, et vel earum delectus obcaecati ducimus at voluptates odio aliquid quis nulla illo veniam non dolorem molestias voluptas!</div>
 			</div>
 			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
+				<h3 class="widget-title" id="startTop">这里是ID为startTop，也就是传说中右侧元素开始固定的位置啦</h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 			<div class="widget">
@@ -61,7 +71,7 @@
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 			<div class="widget">
-				<h3 class="widget-title">这是距离顶部300像素位置</h3>
+				<h3 class="widget-title">这是距离底部300像素位置</h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 

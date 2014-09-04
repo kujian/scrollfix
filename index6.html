@@ -29,8 +29,17 @@
         </span></div>
         <div class="content">
 			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
+				<h3 class="widget-title">固定停留在某个标签位置</h3>
+				<div class="widget-box">
+					<p>有时候你并不知道要停留在的位置距离底部有多少像素，你只知道它需要停在这个位置，那么你只需要知道这里的元素标签是什么就可以了</p>
+					<pre><code>&lt;script type="text/javascript" src="js/scrollfix.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+$(function(){
+var fixfooter = $(".fix-footer")
+fixfooter.scrollFix({endPos:"#fixFooter"})
+})
+&lt;/script&gt;</code></pre>
+				</div>
 			</div>
 			<div class="widget">
 				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
@@ -57,9 +66,26 @@
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 			<div class="widget">
-				<h3 class="widget-title" id="fixFooter">这是#fixFooter的位置</h3>
+				<h3 class="widget-title" id="fixFooter">这是#fixFooter底部开始停靠的位置</h3>
 				
 			</div>
+			<div class="widget">
+				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
+				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
+			</div>
+			<div class="widget">
+				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
+				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
+			</div>
+			<div class="widget">
+				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
+				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
+			</div>
+			<div class="widget">
+				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
+				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
+			</div>
+
 			
 
 		</div>
