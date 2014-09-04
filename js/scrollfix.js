@@ -1,4 +1,4 @@
-;(function($) {
+(function($) {
 	//URI:http://caibaojian.com/scrollfix
 	//author:caibaojian
 	//website:http://caibaojian.com
@@ -21,7 +21,7 @@
 				documentHeight = $(document).height(), //文档高度
 				optsTop = opts.distanceTop, //定义到顶部的高度
 				outerHeight = obj.outerHeight(), //对象高度
-				outerHeight = parseFloat(outerHeight) - parseFloat(obj.css('marginTop').replace(/auto/, 0)),
+				outerHeight = parseFloat(outerHeight) + parseFloat(obj.css('marginBottom').replace(/auto/, 0)),
 				outerWidth = obj.outerWidth(), //对象外宽度
 				objWidth = obj.width(),
 				startTop = $(opts.startTop), //开始浮动固定对象
@@ -32,9 +32,9 @@
 			if ($.isNumeric(opts.endPos)) {
 				toBottom = opts.endPos
 			} else {
-				toBottom = parseInt(documentHeight - $(opts.endPos).offset().top);
+				toBottom = parseFloat(documentHeight - $(opts.endPos).offset().top);
 			}
-			ScrollHeight = parseInt(documentHeight - toBottom), endfix = parseInt(ScrollHeight - outerHeight);
+			ScrollHeight = parseFloat(documentHeight - toBottom), endfix = parseFloat(ScrollHeight - outerHeight);
 			if (startTop[0]) {
 				var startTopOffset = startTop.offset(),
 					startTopPos = startTopOffset.top;
@@ -45,13 +45,19 @@
 				var startBottomOffset = startBottom.offset(),
 					startBottomPos = startBottomOffset.top,
 					startBottomHeight = startBottom.outerHeight();
-				offsetTop = parseInt(startBottomPos + startBottomHeight);
+				offsetTop = parseFloat(startBottomPos + startBottomHeight);
 			}
 			//if ('undefined' != typeof(document.body.style.maxHeight)) {
-			toTop = parseInt(offsetTop - optsTop);
+			toTop = parseFloat(offsetTop - optsTop);
 			toTop = (toTop > 0) ? toTop : 0;
-			var selfBottom = documentHeight - offsetTop - outerHeight;
-			if(selfBottom<=endfix) return ;
+			var selfBottom = documentHeight -  offsetTop - outerHeight;
+			// console.log(obj.outerHeight());
+			// console.log(outerHeight);
+			// console.log(selfBottom);
+			// console.log(toBottom);
+			if(toBottom != 0){
+				if(selfBottom<=toBottom) return ;
+			}
 			//console.log(offsetTop);
 			$(window).scroll(function() {
 				var ScrollTop = $(window).scrollTop();
@@ -78,7 +84,11 @@
 						"position": "absolute",
 						"top": endfix,
 						"width": objWidth
-					})
+					});
+					placeholder.css({
+						'height': outerHeight,
+						'_height': "0"
+					}).insertBefore(obj)
 				} else {
 					obj.css({
 						"position": "static",
