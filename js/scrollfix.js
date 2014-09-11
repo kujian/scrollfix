@@ -39,7 +39,7 @@
             if(!isNaN(bodyToTop)) {
                     optsTop += bodyToTop;
            }
-			if ($.isNumeric(opts.endPos)) {
+			if (!isNaN(opts.endPos)) {
 				toBottom = opts.endPos
 			} else {
 				toBottom = parseFloat(documentHeight - $(opts.endPos).offset().top);
