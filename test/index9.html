@@ -9,10 +9,10 @@
     <meta name="keywords" content="前端博客,代码演示" />
   	<meta name="description" content="滚动到需要固定的地方开始固定-jquery滚动固定插件：scrollfix演示，前端博客代码演示，caibaojian.com，前端代码范例，演示代码" />
   	<style type="text/css">
-  	.main{width:820px; margin:0 auto; }
+  	.main{width:820px; margin:20px auto; position: relative;}
   	.content{float:left; width:500px; text-align: left;}
   	.path{margin-bottom: 40px;}
-  	.sidebar{float:right; width:300px; text-align: left; position: relative;}
+  	.sidebar{float:right; width:300px; text-align: left; }
   	.widget{border:1px solid #eee; margin-bottom:20px;}
   	.widget-title{border-bottom:1px solid #eee; font-size:12px; line-height:24px; padding-left:10px;}
   	.widget-box{padding:10px;}
@@ -22,6 +22,9 @@
   	</style>
 </head>
 <body>
+	<div class="test">
+		<p>测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确测试当position:relative的位置不是body的时候的结果是否正确</p>
+	</div>
 	<div class="main">
 		<div class="path">你的位置：<span xmlns:v="http://rdf.data-vocabulary.org/#">
         <span typeof="v:Breadcrumb"><a href="http://caibaojian.com" rel="v:url" property="v:title">前端博客</a></span>  &gt;
@@ -65,9 +68,7 @@ fix.scrollFix();
 				<h3 class="widget-title">这是#fixFooter的位置</h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
-			<div class="widget">
-				<h3 class="widget-title">这是距离底部300像素位置</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
+			<div style="height:300px">
 			</div>
 
 		</div>
@@ -103,18 +104,13 @@ fix.scrollFix();
 	</div>
 	
 	<script src="js/jquery.js"></script>
-    <script type="text/javascript">
-	<!--
-	!window.jQuery && document.write('<script src=js/jquery.js><\/script>');
-	//-->
-	</script>
 	<script src="js/scrollfix.js"></script>
 
 	<script type="text/javascript">
 		$(function(){
 			var fix = $(".fix"), fixtop = $(".fix-top"), fixStartTop = $(".fix-startTop"), fixStartBottom = $(".fix-startBottom"), fixbottom = $(".fix-bottom"), fixfooter = $(".fix-footer");
 			//第一种情况
-			fix.scrollFix();
+			fix.scrollFix({endPos:300});
 			//第二种情况
 			//fixtop.scrollFix({distanceTop:20});
 			//第三种情况
@@ -128,6 +124,5 @@ fix.scrollFix();
 		})
 
 	</script>
-<script type="text/javascript" src="http://tajs.qq.com/stats?sId=15910806" charset="UTF-8"></script>
 </body>
 </html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery滚动固定插件：scrollfix演示-前端博客</title>
+    <link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="icon">
+  	<link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="shortcut icon">
+  	<link rel="stylesheet" href="reset.css"/>
+    <meta name="keywords" content="前端博客,代码演示" />
+  	<meta name="description" content="前端博客代码演示，caibaojian.com，前端代码范例，演示代码" />
+  	<style type="text/css">
+  	.main{max-width:820px; margin:0 auto;}
+  	.content{float:left; width:500px;}
+  	.sidebar{float:right; width:300px;margin-top:40px; text-align: left;}
+  	.widget{border:1px solid #eee; margin-bottom:20px;}
+  	.widget-title{border-bottom:1px solid #eee; font-size:12px; line-height:24px; padding-left:10px;}
+  	.widget-box{padding:10px;}
+  	.content >div{border:1px solid #eee; padding:10px; font-size:14px; text-align: left; margin-bottom: 20px; max-width:478px;}
+  	.content >div:first-child{margin-top:40px;}
+  	.active{background: #ddd;}
+  	.content >div > h3{font-size:18px; line-height: 2;}
+  	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="path">你的位置：<span xmlns:v="http://rdf.data-vocabulary.org/#">
+        <span typeof="v:Breadcrumb"><a href="http://caibaojian.com" rel="v:url" property="v:title">前端博客</a></span>  &gt;
+                <span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="http://caibaojian.com/c/front">优秀前端开发</a></span> &gt; <span typeof="v:Breadcrumb"><span class="breadcrumb_last" property="v:title"><a href="http://caibaojian.com/scrollfix">jQuery插件：滚动固定在某个位置</a></span></span>
+        </span></div>
+        <div class="content">
+			<div class="widget">
+				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
+				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
+			</div>
+
+		</div>
+		<div class="sidebar">
+			<div class="widget fix">
+				<h3 class="widget-title"><a href="index.html">默认滚动到这里开始浮动</a></h3>
+				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
+			</div>
+			<div class="widget fix-top">
+				<h3 class="widget-title"><a href="index2.html">滚动到距离这里顶部20像素开始固定</a></h3>
+				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, culpa, officia, tempore, et vel earum delectus obcaecati ducimus at voluptates odio aliquid quis nulla illo veniam non dolorem molestias voluptas!</div>
+			</div>
+			<div class="widget active fix-bottom">
+				<h3 class="widget-title"><a href="index5.html">滚动停在底部300像素</a></h3>
+				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, obcaecati, omnis eaque dolorem quam inventore ipsum dignissimos non esse doloremque qui consequatur eius fuga aspernatur facere corporis porro sit distinctio!<br />Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, obcaecati, omnis eaque dolorem quam inventore ipsum dignissimos non esse doloremque qui consequatur eius fuga aspernatur facere corporis porro sit distinctio!<br />Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, obcaecati, omnis eaque dolorem quam inventore ipsum dignissimos non esse doloremque qui consequatur eius fuga aspernatur facere corporis porro sit distinctio!<br />Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, obcaecati, omnis eaque dolorem quam inventore ipsum dignissimos non esse doloremque qui consequatur eius fuga aspernatur facere corporis porro sit distinctio!<br />
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div style=" clear:both;height:300px">11111111</div>
+	<script src="js/jquery.js"></script>
+    <script type="text/javascript">
+	<!--
+	!window.jQuery && document.write('<script src=js/jquery.js><\/script>');
+	//-->
+	</script>
+	<script src="js/scrollfix.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var fix = $(".fix"), fixtop = $(".fix-top"), fixStartTop = $(".fix-startTop"), fixStartBottom = $(".fix-startBottom"), fixbottom = $(".fix-bottom"), fixfooter = $(".fix-footer");
+			//第一种情况
+			// fix.scrollFix();
+			//第二种情况
+			//fixtop.scrollFix({distanceTop:20});
+			//第三种情况
+			//fixStartTop.scrollFix({startTop:"#startTop"});
+			//第四种情况
+			//fixStartBottom.scrollFix({startBottom:"#startBottom"});
+			//第五种情况
+			fixbottom.scrollFix({endPos:300});
+			//第六种情况
+			//fixfooter.scrollFix({endPos:"#fixFooter"})
+		})
+
+	</script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=15910806" charset="UTF-8"></script>
+</body>
+</html>

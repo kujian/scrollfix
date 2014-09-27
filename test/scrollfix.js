@@ -11,13 +11,22 @@
 				distanceTop: 0, //固定在顶部的高度
 				endPos: 0 //停靠在底部的位置，可以为jquery对象
 			};
-			var opts = $.extend({},
-				defaults, options),
-				obj = $(this),
-				offset = obj.offset(),
-				offsetTop = offset.top, //对象距离顶部高度
-				offsetLeft = offset.left, //对象距离左边宽度
-				placeholder = jQuery('<div>'), //创建一个jquery对象
+			var opts = $.extend({},defaults, options),
+				_this = $(this),
+				offset = _this.offset(),
+				offsetLeft,
+				offsetTop,
+				placeholder = jQuery('<div>') //创建一个jquer对象
+				;
+			
+			var ie6=!-[1,]&&!window.XMLHttpRequest; //兼容IE6
+			var timer;
+			
+			function onScroll(el){
+				var
+				obj = el,
+
+				
 				documentHeight = $(document).height(), //文档高度
 				optsTop = opts.distanceTop, //定义到顶部的高度
 				outerHeight = obj.outerHeight(), //对象高度
@@ -29,7 +38,8 @@
 				toBottom, //停止滚动位置距离底部的高度
 				ScrollHeight, //对象滚动的高度
 				endfix; //开始停止固定的位置
-
+				console.log(offsetLeft);
+				console.log(offsetTop);
 			//如果没有找到节点，不进行处理
 			if(obj.length<=0){
 				return;
@@ -42,7 +52,7 @@
 				if(/^body|html$/i.test(parents[0].tagName)) break; //假如父类元素的标签为body或者HTML，说明没有找到父类为以上的定位，退出循环
 			}
 			if(/^body|html$/i.test(parents[0].tagName)){ //当父类元素非body或者HTML时，说明找到了一个父类为'relative'或者'absolute'的元素，得出它的偏移高度
-				var parentsOffset = {top:0,left:0};
+				var parentsOffset = 0;
 			}else{
 				var parentsOffset = parents.offset();
 				
@@ -75,39 +85,13 @@
 				offsetTop = parseFloat(startBottomPos + startBottomHeight);
 			}
 
-			toTop = parseFloat(obj.offset().top - opts.distanceTop);
+			toTop = parseFloat(offsetTop - optsTop);
 			toTop = (toTop > 0) ? toTop : 0;
 			var selfBottom = documentHeight -  offsetTop - outerHeight;
 			//如果滚动停在底部的值不为0，并且自身到底部的高度小于上面这个值，不执行浮动固定
 			if((toBottom != 0) && (selfBottom<=toBottom)){ return ;}
-			var ie6=!-[1,]&&!window.XMLHttpRequest; //兼容IE6
-			var timer = 0 ;
-			var flag = false;
-			$(window).on("scroll",function(){
-				// if(flag){
-				// 	resetScroll(true);
-				// }else{
-				// 	onScroll();
-				// }
-				onScroll();
-				
-				
-				console.log("offsettop : "+offsetTop);
-				console.log("optsTop : "+optsTop);
-				console.log("toTop : "+toTop);
-				console.log("offsetTop - optsTop : "+ (offsetTop - optsTop));
-
-			});
-			$(window).on("resize",function(){
-				resetScroll(true);
-				flag = true;
-			})
-			// $(window).on("resize",function(){
-			// 	clearTimeout(timer);
-			// 	timer = setTimeout(onScroll,10);
-			// })
-			function onScroll(){
 				var ScrollTop = $(window).scrollTop();
+
 				if ((ScrollTop > toTop) && (ScrollTop < endfix)) {
 					obj.fadeIn().css({
 						"position": "fixed",
@@ -144,15 +128,19 @@
 					placeholder.remove()
 				}
 			};
-			function resetScroll(isResize){
-				if(isResize){
-					onScroll();
-
-					console.log(placeholder.offset().left);
-				}else{
-					onScroll();
-				}
-			}
+			$(window).on("scroll",function(){
+				
+				offsetTop = offset.top, //对象距离顶部高度
+				offsetLeft = offset.left; //对象距离左边宽度
+				onScroll(_this);
+			});
+			$(window).on("resize",function(){
+				offset = _this.offset(),
+				offsetTop = offset.top, //对象距离顶部高度
+				offsetLeft = offset.left; //对象距离左边宽度
+				onScroll(_this);
+				
+			});
 
 		})
 	}
