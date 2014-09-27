@@ -54,14 +54,9 @@
             if(!isNaN(bodyToTop)) {
                     optsTop += bodyToTop;
            }
-<<<<<<< HEAD
            //计算停在底部的距离
 			if (!isNaN(opts.endPos)) {
 				toBottom = opts.endPos;
-=======
-			if (!isNaN(opts.endPos)) {
-				toBottom = opts.endPos
->>>>>>> fb38d43eb01273b678c97767103ee7da5b69c62c
 			} else {
 				toBottom = parseFloat(documentHeight - $(opts.endPos).offset().top);
 			}
@@ -97,10 +92,10 @@
 				onScroll();
 				
 				
-				console.log("offsettop : "+offsetTop);
-				console.log("optsTop : "+optsTop);
-				console.log("toTop : "+toTop);
-				console.log("offsetTop - optsTop : "+ (offsetTop - optsTop));
+				// console.log("offsettop : "+offsetTop);
+				// console.log("optsTop : "+optsTop);
+				// console.log("toTop : "+toTop);
+				// console.log("offsetTop - optsTop : "+ (offsetTop - optsTop));
 
 			});
 			$(window).on("resize",function(){
@@ -161,4 +156,8 @@
 
 		})
 	}
+	// function debug($obj) {  
+ //    if (window.console && window.console.log)  
+ //      window.console.log('hilight selection count: ' + $obj.size());  
+ //  };
 })(jQuery);
