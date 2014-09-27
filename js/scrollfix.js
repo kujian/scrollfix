@@ -54,9 +54,14 @@
             if(!isNaN(bodyToTop)) {
                     optsTop += bodyToTop;
            }
+<<<<<<< HEAD
            //计算停在底部的距离
 			if (!isNaN(opts.endPos)) {
 				toBottom = opts.endPos;
+=======
+			if (!isNaN(opts.endPos)) {
+				toBottom = opts.endPos
+>>>>>>> fb38d43eb01273b678c97767103ee7da5b69c62c
 			} else {
 				toBottom = parseFloat(documentHeight - $(opts.endPos).offset().top);
 			}
