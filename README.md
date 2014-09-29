@@ -24,6 +24,19 @@ jquery插件：滑动到某个位置浮动起来
 
 距离顶部的高度为多少时停止浮动，并固定在相应位置，可以指定jquery对象，如:endPos:"#footer",也可以是数字：endPos:300.
 
+###第五个：bottom:-1#
+
+默认不使用位置为bottom的值，当设置为0，将会停在窗口底端
+
+###第六个：zIndex:0#
+
+当没有设置这个值时，将默认使用元素的css z-index值
+
+###第七个：baseClassName：scrollfixed#
+
+当元素开始固定时给它添加一个class，你可以设置为你喜欢的类名。
+
+
 ###使用方法
 
 $("#fix").scrollFix({startTop:"#startTop",distanceTop:20,endPos:"#footer"});
@@ -54,3 +67,11 @@ $("#fix").scrollFix({startTop:"#startTop",distanceTop:20,endPos:"#footer"});
  * 增加了两个混合的使用例子
  * 兼容IE6
  * 增加了对body有top值时修正固定的顶部高度
+ 
+1.7 2014-9-29
+
+ * 增加了三个参数，分别是bottom、zIndex和baseClassName.
+ * 支持自适应布局,支持缩小窗口，即resize
+ * 兼容IE6，支持上一级为position:relative或者position:absolute.
+ * 如果没有什么重大的改动的话就是最后一个版本了。
+ * 另外附上一个scrollfix-1.4.js的版本，这个是不支持自适应的最后一个版本，同时也没有以上加的三个参数。

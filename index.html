@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <title>scrollfix演示-前端博客</title>
-    <link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="icon">
-    <link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="shortcut icon">
-    <link rel="stylesheet" href="reset.css"/>
+
+
     <meta name="keywords" content="前端博客,代码演示" />
     <meta name="description" content="滚动停在底部某个标签的位置-jquery滚动固定插件：scrollfix演示，前端博客代码演示，caibaojian.com，前端代码范例，演示代码" />
 <style>
@@ -73,13 +72,15 @@ body ul {
 }
 .right {
     float: left;
-    margin-left: 40px;
+    margin-left: 30px;
 }
 .summary {
     border: 1px solid #dddddd;
     overflow: hidden;
     margin-top: 20px;
     background-color: white;
+    margin-left: 10px;
+    zoom:1;
 }
 .summary .caption {
     border-bottom: 1px solid #dddddd;
@@ -90,6 +91,7 @@ body ul {
 }
 .summary.scrollfixed {
     margin-top: 0px;
+    margin-left:0;
 }
 .summary.scrollfixed .caption {
     color: red;
@@ -99,6 +101,7 @@ body ul {
     margin: 10px;
     font-size: 80%;
 }
+*{margin-bottom: auto;}
 </style>
 <meta charset="utf-8"/>
 <script type="text/javascript" src="js/jquery.js"></script>
@@ -116,8 +119,8 @@ body ul {
         // content if the page is scrolled far enough.
 
         $('.footer').scrollFix( {
-            distanceTop : $(window).height() - $(".footer").outerHeight(),
-            startTop:'.banner',
+            startTop:'body',
+            bottom: '0',
             endPos : '.footer-content',
             zIndex : 999
         });
@@ -132,19 +135,24 @@ body ul {
             var next = summaries[i + 1];
             if(next){
                 summary.scrollFix({
-                distanceTop: $('.header').outerHeight() + 10,
+                distanceTop: $(".header").outerHeight() + 10,
                 endPos: next,
                 zIndex: 998
             });
             }else{
                 summary.scrollFix({
-                    distanceTop: $('.header').outerHeight() + 10,
+                    distanceTop: $(".header").outerHeight() + 10,
                     endPos: '.footer',
                     zIndex: 998
                 });
             }
             
         });
+        // $("#summary1").scrollFix({
+        //     distanceTop:$(".header").outerHeight() + 10,
+        //     endPos: '.footer',
+        //     zIndex: 998
+        // })
     });
 </script>
 </head>
@@ -182,15 +190,15 @@ body ul {
         // Dock the header to the top of the window when scrolled past the banner.
         // This is the default behavior.
 
-        $('.header').scrollFix();
+        $('.header').scrollFix({zIndex:1000});
 
 
         // Dock the footer to the bottom of the page, but scroll up to reveal more
         // content if the page is scrolled far enough.
 
         $('.footer').scrollFix( {
-            distanceTop : $(window).height() - $(".footer").outerHeight(),
-            startTop:'.banner',
+            startTop:'body',
+            bottom: '0',
             endPos : '.footer-content',
             zIndex : 999
         });
@@ -205,13 +213,13 @@ body ul {
             var next = summaries[i + 1];
             if(next){
                 summary.scrollFix({
-                distanceTop: $('.header').outerHeight() + 10,
+                distanceTop: $(".header").outerHeight() + 10,
                 endPos: next,
                 zIndex: 998
             });
             }else{
                 summary.scrollFix({
-                    distanceTop: $('.header').outerHeight() + 10,
+                    distanceTop: $(".header").outerHeight() + 10,
                     endPos: '.footer',
                     zIndex: 998
                 });
@@ -341,5 +349,6 @@ body ul {
         </li>
     </ul>
     <a href="https://github.com/kujian/scrollfix" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="fork.png" alt="Fork me on GitHub"></a>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=15910806" charset="UTF-8"></script>
 </body>
 </html>
