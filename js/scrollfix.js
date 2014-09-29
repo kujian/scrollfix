@@ -5,18 +5,13 @@
 	//descirption:scroll and fixed some div
 	$.fn.scrollFix = function(options) {
 		return this.each(function() {
-			var defaults = {
-				startTop: null, //滑到这个位置顶部时开始浮动，默认为空
-				startBottom: null, //滑到这个位置末端开始浮动，默认为空
-				distanceTop: 0, //固定在顶部的高度
-				endPos: 0 //停靠在底部的位置，可以为jquery对象
-			};
-			var opts = $.extend({},
-				defaults, options),
-				obj = $(this),
+			
+			var opts = $.extend({},$.fn.scrollFix.defaultOptions, options);
+			var	obj = $(this),
+				base = this,
 				offset = obj.offset(),
-				offsetTop = offset.top, //对象距离顶部高度
-				offsetLeft = offset.left, //对象距离左边宽度
+				selfTop = offset.top, //对象距离顶部高度
+				selfLeft = offset.left, //对象距离左边宽度
 				placeholder = jQuery('<div>'), //创建一个jquery对象
 				documentHeight = $(document).height(), //文档高度
 				optsTop = opts.distanceTop, //定义到顶部的高度
@@ -29,10 +24,13 @@
 				toBottom, //停止滚动位置距离底部的高度
 				ScrollHeight, //对象滚动的高度
 				endfix; //开始停止固定的位置
-
 			//如果没有找到节点，不进行处理
 			if(obj.length<=0){
 				return;
+			}
+			var zIndex = originalZIndex = obj.css('zIndex');
+			if(opts.zIndex !=0){
+				zIndex = opts.zIndex;
 			}
 			var parents = obj.parent();
 			var Position = parents.css('position');
@@ -61,103 +59,80 @@
 				toBottom = parseFloat(documentHeight - $(opts.endPos).offset().top);
 			}
 			//计算需要滚动的高度以及停止滚动的高度
-			ScrollHeight = parseFloat(documentHeight - toBottom), endfix = parseFloat(ScrollHeight - outerHeight);
+			ScrollHeight = parseFloat(documentHeight - toBottom - optsTop), endfix = parseFloat(ScrollHeight - outerHeight);
 			//计算顶部的距离值
 			if (startTop[0]) {
 				var startTopOffset = startTop.offset(),
 					startTopPos = startTopOffset.top;
-				offsetTop = startTopPos;
+				selfTop = startTopPos;
 			}
 			if (startBottom[0]) {
 				var startBottomOffset = startBottom.offset(),
 					startBottomPos = startBottomOffset.top,
 					startBottomHeight = startBottom.outerHeight();
-				offsetTop = parseFloat(startBottomPos + startBottomHeight);
+				selfTop = parseFloat(startBottomPos + startBottomHeight);
 			}
 
-			toTop = parseFloat(obj.offset().top - opts.distanceTop);
-			toTop = (toTop > 0) ? toTop : 0;
-			var selfBottom = documentHeight -  offsetTop - outerHeight;
+			var	toTop = selfTop - optsTop;
+				toTop = (toTop > 0) ? toTop : 0;
+
+			var selfBottom = documentHeight -  selfTop - outerHeight;
 			//如果滚动停在底部的值不为0，并且自身到底部的高度小于上面这个值，不执行浮动固定
 			if((toBottom != 0) && (selfBottom<=toBottom)){ return ;}
 			var ie6=!-[1,]&&!window.XMLHttpRequest; //兼容IE6
-			var timer = 0 ;
-			var flag = false;
 			$(window).on("scroll",function(){
-				// if(flag){
-				// 	resetScroll(true);
-				// }else{
-				// 	onScroll();
-				// }
 				onScroll();
-				
-				
-				// console.log("offsettop : "+offsetTop);
-				// console.log("optsTop : "+optsTop);
-				// console.log("toTop : "+toTop);
-				// console.log("offsetTop - optsTop : "+ (offsetTop - optsTop));
-
 			});
-			$(window).on("resize",function(){
-				resetScroll(true);
-				flag = true;
-			})
-			// $(window).on("resize",function(){
-			// 	clearTimeout(timer);
-			// 	timer = setTimeout(onScroll,10);
-			// })
 			function onScroll(){
 				var ScrollTop = $(window).scrollTop();
-				if ((ScrollTop > toTop) && (ScrollTop < endfix)) {
-					obj.fadeIn().css({
+				if (ScrollTop > toTop  && (ScrollTop < endfix)) {
+					obj.addClass(opts.baseClassName).css({
+						"z-index":zIndex,
 						"position": "fixed",
-						"top": optsTop,
-						"left": offsetLeft,
+						"top": opts.bottom == -1?optsTop:'',
+						"bottom":opts.bottom == -1?'':opts.bottom,
 						"width": objWidth
 					});
 					if(ie6){//IE6则使用这个样式
 						obj.css({
+							"z-index":zIndex,
 							"position":"absolute",
-							"top":ScrollTop + optsTop - parentsOffset.top,
-							"left": offsetLeft
+							"top":opts.bottom == -1?ScrollTop + optsTop - parentsOffset.top:'',
+							"bottom":opts.bottom == -1?'':ScrollTop + $(window).height() - parentsOffset.top
 						})
 					}
 					placeholder.css({
 						'height': outerHeight
-					}).insertBefore(obj)
+					}).insertBefore(obj);
 				} else if (ScrollTop >= endfix) {
-					obj.css({
+					obj.addClass(opts.baseClassName).css({
+						"z-index":zIndex,
 						"position": "absolute",
-						"top": endfix - parentsOffset.top,
-						"left": offsetLeft - parentsOffset.left,
+						"top": endfix - parentsOffset.top + optsTop,
 						"width": objWidth
 					});
 					placeholder.css({
 						'height': outerHeight
 					}).insertBefore(obj)
 				} else {
-					obj.css({
+					obj.removeClass(opts.baseClassName).css({
+						"z-index":originalZIndex,
 						"position": "static",
 						"top": "",
-						"left": ""
+						"bottom":""
 					});
 					placeholder.remove()
 				}
-			};
-			function resetScroll(isResize){
-				if(isResize){
-					onScroll();
-
-					console.log(placeholder.offset().left);
-				}else{
-					onScroll();
-				}
 			}
-
 		})
 	}
-	// function debug($obj) {  
- //    if (window.console && window.console.log)  
- //      window.console.log('hilight selection count: ' + $obj.size());  
- //  };
+	$.fn.scrollFix.defaultOptions = {
+				startTop: null, //滑到这个位置顶部时开始浮动，默认为空
+				startBottom: null, //滑到这个位置末端开始浮动，默认为空
+				distanceTop: 0, //固定在顶部的高度
+				endPos: 0, //停靠在底部的位置，可以为jquery对象
+				bottom: -1,
+				zIndex: 0,
+				baseClassName :'scrollfixed' //开始固定时添加的类
+			};
 })(jQuery);

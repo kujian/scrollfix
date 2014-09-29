@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>滚动停在底部某个标签的位置-jquery滚动固定插件：scrollfix演示-前端博客</title>
+    <title>滚动到需要固定的地方开始固定-jquery滚动固定插件：scrollfix演示-前端博客</title>
     <link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="icon">
   	<link type="image/x-icon" href="http://caibaojian.com/favicon.ico" rel="shortcut icon">
   	<link rel="stylesheet" href="reset.css"/>
     <meta name="keywords" content="前端博客,代码演示" />
-  	<meta name="description" content="滚动停在底部某个标签的位置-jquery滚动固定插件：scrollfix演示，前端博客代码演示，caibaojian.com，前端代码范例，演示代码" />
+  	<meta name="description" content="滚动到需要固定的地方开始固定-jquery滚动固定插件：scrollfix演示，前端博客代码演示，caibaojian.com，前端代码范例，演示代码" />
   	<style type="text/css">
   	.main{width:820px; margin:0 auto; }
   	.content{float:left; width:500px; text-align: left;}
@@ -18,12 +17,8 @@
   	.widget-title{border-bottom:1px solid #eee; font-size:12px; line-height:24px; padding-left:10px;}
   	.widget-box{padding:10px;}
   	.content .widget{border:1px solid #eee; padding:10px; font-size:14px; text-align: left; margin-bottom: 20px; max-width:478px;}
-  	.scrollfixed{background: #ddd;}
+  	.active{background: #ddd;}
   	.content .widget  h3{font-size:18px; line-height: 2;}
-  	@media screen and  (max-width:769px){
-  		.main{width:720px;}
-  		.content{width:400px;}
-  	}
   	</style>
 </head>
 <body>
@@ -34,16 +29,24 @@
         </span></div>
         <div class="content">
 			<div class="widget">
-				<h3 class="widget-title">混合模式2:1.距离顶部10像素，2.到某个标签的底部开始浮动，停靠在某个标签的位置</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
-			</div>
+				<h3 class="widget-title">开始浮动代码：这个是没有任何设置的，就是滚动到元素的位置开始浮动</h3>
+				<div class="widget-box"><pre><code>&lt;script type="text/javascript" src="js/scrollfix.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+$(function(){
+var fix = $(".fix");
+fix.scrollFix();
+})
+&lt;/script&gt;</code></pre></div></div>
 			<div class="widget">
 				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, culpa, officia, tempore, et vel earum delectus obcaecati ducimus at voluptates odio aliquid quis nulla illo veniam non dolorem molestias voluptas!</div>
 			</div>
 			<div class="widget">
-				<h3 class="widget-title" id="startBottom">这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端
-				这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端 这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端 这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端  </h3>
+				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
+				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
+			</div>
+			<div class="widget">
+				<h3 class="widget-title"></h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 			<div class="widget">
@@ -54,75 +57,42 @@
 				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
-			<div class="widget">
+			<div class="widget" id="fixFooter">
 				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
+				<h3 class="widget-title">这是#fixFooter的位置</h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 			<div class="widget">
-				<h3 class="widget-title" id="fixFooter">这是#fixFooter的位置</h3>
-				
-			</div>
-			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
+				<h3 class="widget-title">这是距离底部300像素位置</h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
-			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
-			</div>
-			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
-			</div>
-			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
-			</div>
-			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
-			</div>
-			<div class="widget">
-				<h3 class="widget-title">这只是内容，效果看侧栏</h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
-			</div>
-			
 
 		</div>
 		<div class="sidebar">
-			<div class="widget fix">
-				<h3 class="widget-title"><a href="index.html">默认滚动到这里开始固定</a></h3>
+			<div class="widget active fix">
+				<h3 class="widget-title"><a href="index.html">默认滚动到这里开始固定在顶部</a></h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, consequatur, dolorem eaque culpa ut iste tempora molestias repudiandae magni quo excepturi sapiente nisi reprehenderit omnis ea! Libero aspernatur fugit beatae?</div>
 			</div>
 			<div class="widget fix-top">
 				<h3 class="widget-title"><a href="index2.html">滚动到距离这里顶部20像素开始固定</a></h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, culpa, officia, tempore, et vel earum delectus obcaecati ducimus at voluptates odio aliquid quis nulla illo veniam non dolorem molestias voluptas!</div>
 			</div>
-			<div class="widget fix-startBottom">
-				<h3 class="widget-title"><a href="index4.html">滚动到一个标签#startBottom的末端开始固定</a></h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, earum aliquid quia facere dolorum nam ipsa quae ullam ea laboriosam deleniti perferendis similique odit at ducimus rerum porro maxime aut.<div id="startBottom">这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端 </div></div>
+			<div class="widget fix-startTop">
+				<h3 class="widget-title"><a href="index3.html">滚动到一个标签#startTop的头部开始固定</a></h3>
+				<div class="widget-box">Top Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum, itaque, deleniti, et, odio molestias consectetur eos quisquam cumque quia consequuntur quaerat pariatur debitis soluta! Iste modi asperiores voluptatibus veniam laborum.<div id="startTop">这是#start</div></div>
 			</div>
 			<div class="widget fix-startBottom">
 				<h3 class="widget-title"><a href="index4.html">滚动到一个标签#startBottom的末端开始固定</a></h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, earum aliquid quia facere dolorum nam ipsa quae ullam ea laboriosam deleniti perferendis similique odit at ducimus rerum porro maxime aut.<div id="startBottom">这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端 </div></div>
 			</div>
-			<div class="widget fix-startBottom">
-				<h3 class="widget-title"><a href="index4.html">滚动到一个标签#startBottom的末端开始固定</a></h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, earum aliquid quia facere dolorum nam ipsa quae ullam ea laboriosam deleniti perferendis similique odit at ducimus rerum porro maxime aut.<div id="startBottom">这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端 </div></div>
+			<div class="widget fix-bottom">
+				<h3 class="widget-title"><a href="index5.html">滚动停在底部300像素</a></h3>
+				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, obcaecati, omnis eaque dolorem quam inventore ipsum dignissimos non esse doloremque qui consequatur eius fuga aspernatur facere corporis porro sit distinctio!</div>
 			</div>
-			<div class="widget fix-startBottom">
-				<h3 class="widget-title"><a href="index4.html">滚动到一个标签#startBottom的末端开始固定</a></h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, earum aliquid quia facere dolorum nam ipsa quae ullam ea laboriosam deleniti perferendis similique odit at ducimus rerum porro maxime aut.<div id="startBottom">这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端 </div></div>
-			</div>
-			<div class="widget fix-startBottom">
-				<h3 class="widget-title"><a href="index4.html">滚动到一个标签#startBottom的末端开始固定</a></h3>
-				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, earum aliquid quia facere dolorum nam ipsa quae ullam ea laboriosam deleniti perferendis similique odit at ducimus rerum porro maxime aut.<div id="startBottom">这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端这是#startBottom的末端 </div></div>
-			</div>
-			<div class="widget active fix-footer">
+			<div class="widget fix-footer">
 				<h3 class="widget-title"><a href="index6.html">滚动停在底部#fixFooter的位置</a></h3>
 				<div class="widget-box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, officia libero quia animi voluptates autem quae voluptate aut. Iusto, iste, at dolor fugiat nisi nihil ea dicta nostrum voluptates ducimus?</div>
 			</div>
@@ -132,13 +102,19 @@
 
 	</div>
 	
-	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/jquery.js"></script>
+    <script type="text/javascript">
+	<!--
+	!window.jQuery && document.write('<script src=js/jquery.js><\/script>');
+	//-->
+	</script>
 	<script src="js/scrollfix.js"></script>
+
 	<script type="text/javascript">
 		$(function(){
 			var fix = $(".fix"), fixtop = $(".fix-top"), fixStartTop = $(".fix-startTop"), fixStartBottom = $(".fix-startBottom"), fixbottom = $(".fix-bottom"), fixfooter = $(".fix-footer");
 			//第一种情况
-			// fix.scrollFix();
+			fix.scrollFix();
 			//第二种情况
 			//fixtop.scrollFix({distanceTop:20});
 			//第三种情况
@@ -148,11 +124,10 @@
 			//第五种情况
 			//fixbottom.scrollFix({endPos:300});
 			//第六种情况
-			fix.scrollFix({endPos:"#startBottom"});
-			fixfooter.scrollFix({distanceTop:10, startBottom:"#startBottom", endPos:"#fixFooter"});
+			//fixfooter.scrollFix({endPos:"#fixFooter"})
 		})
 
 	</script>
-
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=15910806" charset="UTF-8"></script>
 </body>
 </html>
