@@ -2,7 +2,7 @@
 
 jquery插件：滑动到某个位置浮动起来
 
-[插件参数详解和在线演示](http://caibaojian.com/scrollfix)
+[插件参数详解和在线演示](https://qdkfweb.cn/scrollfix)
 
 
 插件参数有4个，下面我将说明一下如何使用这个浮动固定插件
