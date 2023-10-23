@@ -1,7 +1,7 @@
 (function($) {
-	//URI:http://caibaojian.com/scrollfix
+	//URI:https://qdkfweb.cn/scrollfix
 	//author:caibaojian
-	//website:http://caibaojian.com
+	//website:https://qdkfweb.cn
 	//descirption:scroll and fixed some div
 	$.fn.scrollFix = function(options) {
 		return this.each(function() {
