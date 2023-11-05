@@ -20,6 +20,7 @@
 				placeholder = jQuery('<div>'), //创建一个jquery对象
 				optsTop = opts.distanceTop, //定义到顶部的高度
 				endfix = 0; //开始停止固定的位置
+			
 
 			var originalPosition;
 			var originalOffsetTop;
@@ -132,6 +133,25 @@
 			function onScroll() {
 				lastOffsetLeft = 1;
 				var ScrollTop = $(window).scrollTop();
+				
+				 /**Jackie重新计算相关数据start****/
+				var documentHeight = $(document).height(); //文档高度
+				var startTop = $(opts.startTop), //开始浮动固定对象
+				    startBottom = $(opts.startBottom),
+				    toBottom, //停止滚动位置距离底部的高度
+				    ScrollHeight; //对象滚动的高度
+				//计算停在底部的距离
+				if (!isNaN(opts.endPos))
+				{
+				    toBottom = opts.endPos;
+				} else
+				{
+				    toBottom = parseFloat(documentHeight - $(opts.endPos).offset().top);
+				}
+				//计算需要滚动的高度以及停止滚动的高度
+				ScrollHeight = parseFloat(documentHeight - toBottom - optsTop), endfix = parseFloat(ScrollHeight - outerHeight);
+				/**Jackie重新计算相关数据end**/
+				
 				if (opts.bottom != -1) {
 					ScrollTop = ScrollTop + $(window).height() - outerHeight - opts.bottom;
 				}
